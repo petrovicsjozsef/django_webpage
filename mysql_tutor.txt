@@ -1,0 +1,56 @@
+-------------------------------------------------------
+*******************************************************
+            MySQL tutor és hasznos infó
+*******************************************************
+-------------------------------------------------------
+
+
+Mysql server elindítása:
+>>> mysql.server start
+_______________________________________________________
+
+
+Adatbázis létrehozás:
+Terminálba:
+>>> mysql -u root -p
+
+Mysql  terminálba:
+CREATE DATABASE myproject CHARACTER SET UTF8;
+CREATE USER myprojectuser@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON myproject.* TO myprojectuser@localhost;
+FLUSH PRIVILEGES;
+# ha valamit nem fogad el adok neki egy FLUSH PRIVILEGES; parancsot és utána el fogadja
+_______________________________________________________
+
+
+My SQL config file minta:
+
+# Default Homebrew MySQL server config
+[mysqld]
+# Only allow connections from localhost
+bind-address = 127.0.0.1
+
+#django_test
+'NAME': 'djangotestDB',
+'USER': 'root',
+'PASSWORD': 'root',
+'HOST': '',
+'PORT': '',
+_______________________________________________________
+
+
+Hasznos parancsok:
+
+    SHOW DATABASES;
+
+    DB törlése:
+    DROP DATABASE adatbázis_neve;
+
+    Userek listája:
+    SELECT User FROM mysql.user
+
+    EXIT;
+
+    SHOW TABLES;
+
+     mysql> use adatbazis

@@ -1,0 +1,35 @@
+-------------------------------------------------------
+*******************************************************
+                      Git tutorial
+*******************************************************
+-------------------------------------------------------
+
+# az első két lépés, lehet, hogy nem kell!
+1. ssh-add
+2. Ssh passpharas megadása
+
+3. Hozzáadod a módosított vagy új filokat:
+   >>> git add új_file_neve
+
+   vagy ha sok van, pl txt file esetén az összeset
+   >>> git add *.txt
+
+   vagy mindent ami a mappában van
+   >>> git add *
+
+   Vagy csak a változó filokat adom hozzá:
+   >>> git add -u
+
+5. commitálás:
+   >>> git commit -m 'commit szövege'
+
+6. Feltöltöd a git szerverre:
+   >>> git push
+
+
+Hasznos:
+  Ki-mit commitált?
+     >>> git log
+
+  Letőlteni a friss verziót, pl ha én szerkesztettem utoljára:
+     >>> git pull
