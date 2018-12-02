@@ -1,0 +1,26 @@
+-------------------------------------------------------
+*******************************************************
+
+                Readme file Daninak
+                -------------------
+
+Részletes leírás a kezdő lépésekhez, használd!
+Tartsd be a lépések sorrendjét!
+
+A kiadható parancsokat mindíg a ">>>" jel után találod.
+
+*******************************************************
+-------------------------------------------------------
+
+
+!  >>> pip install mysqlclient
+!  >>> pip install MySQL-python
+
+
+
+
+
+ssh-keygen helye: /home/lubuntu/.ssh
+
+
+passpharas: rendszergazdajelszo
