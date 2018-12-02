@@ -1,0 +1,25 @@
+elif szerkezet:
+
+if
+elif
+elif
+elif
+.
+.
+.
+else
+————————————————————————————————————————————————————————
+ def hi(name):
+        print('Hi ' + name + '!')
+
+    girls = ['Rachel', 'Monica', 'Phoebe', 'Ola', 'You']
+    for name in girls:
+        hi(name)
+        print('Next girl')
+————————————————————————————————————————————————————————
+“A Pythont a 80-as évek végén alkották meg, és a fő cél az volt, hogy ne csak gépek, hanem emberek számára is olvasható legyen. Ezért néz ki sokkal egyszerűbbnek, mint más programnyelvek.”
+————————————————————————————————————————————————————————
+
+
+
+————————————————————————————————————————————————————————

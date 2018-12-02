@@ -1,0 +1,36 @@
+"
+
+#---------------------------------------------------------------------------
+hogyan párosítja össze a Django az URL-eket és a view-kat: 
+A Django reguláris kifejezéseket használ. A regexnek sok szabálya van arra, hogy hogyan épít fel egy keresési mintázatot. 
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+példa:
+	^ a szöveg eleje
+	$ a szöveg vége
+	\d számjegy
+	+ ez azt jelzi, hogy az előző elem egynél többször ismétlődik
+	() ez a minta egy részét fogja össze
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+^post/(\d+)/$
+	A ^post/ azt mondja meg a Django-nak, hogy minden olyan url-t találjon meg, ami post/-tal kezdődik (rögtön ezután: ^)
+	A (\d+) azt jelenti, hogy ezután egy szám fog következni (egy vagy több számjegyű), és ezt a számot ki szeretnénk olvasni az URL-ből
+	A / azt mondja meg a Django-nak, hogy utána még egy / karakternek kell következnie
+	A $ az URL végét jelzi, vagyis csak azok a stringeket fogja megfeleltetni a mintának, amik így végződnek: /
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+Amikor Pythonban írunk reguláris kifejezéseket, a stringek előtt mindig egy r áll. Ez egy hasznos tipp a Pythonnak, hogy a string tartalmazhat speciális karaktereket, de ezek a reguláris kifejezés alkotóelemei, és nem magának a Pythonnak szólnak.
+#---------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
+
+
+"

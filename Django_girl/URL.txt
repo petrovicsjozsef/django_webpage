@@ -1,0 +1,28 @@
+#-------------------------django girl---------------------------------------
+hogy tisztán tartsuk a mysite/urls.py fájlt, a blog alkalmazásból fogjuk importálni az url-eket.
+"
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+url(r'', include('blog.urls')):
+	a Django mindent, ami a 'http://127.0.0.1:8000/'-re jön, átirányít a blog.urls-re, és ott fogja keresni a további tennivalókat.
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+példa:
+urlpatterns = [
+    url(r'^$', views.post_list, name='post_list'),]
+
+egy post_list nevű viewt rendeltünk hozzá a ^$ URL-hez. Ez a regex a ^ karaktert (string kezdete) és az utána következő $ karaktert (string vége) fogja keresni - vagyis csak az üres string felel meg neki. Ez így helyes, mert a Django URL resolverében a 'http://127.0.0.1:8000/' nem számít az URL részének. Ez a minta mondja meg a Django-nak, hogy ha valaki a 'http://127.0.0.1:8000/' címen lép be a weboldaladra, a views.post_list a helyes lépés.
+
+Az utolsó rész, name='post_list' az URL neve, amit a view azonosítására használunk. Ez lehet ugyanaz, mint a view neve, de lehet teljesen más is. 
+#---------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------
+hivatalos tutorial:
+https://docs.djangoproject.com/en/1.11/topics/http/urls/
+#---------------------------------------------------------------------------
+"

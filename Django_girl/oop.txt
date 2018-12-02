@@ -1,0 +1,34 @@
+#-------------------OOP példa a self használatára-----------------------
+OOP példa ami segít megérteni a self használatát:
+
+		class Post(models.Model):
+			author = models.ForeignKey('auth.User')
+			title = models.CharField(max_length=200)
+			text = models.TextField()
+			created_date = models.DateTimeField(default=timezone.now)
+			published_date = models.DateTimeField(blank=True, null=True)
+
+			def publish(self):
+				self.published_date = timezone.now()
+				self.save()
+
+			def __str__(self):
+				return self.title
+			
+				
+	tehát egy objektumon belül ha definiálok egy metodust, akkor az nem látja az objektum propertyjeit, 
+	ezért így deffiniálom:
+		
+		def publish(self):
+				self.published_date = timezone.now()
+				
+		def __str__(self):
+				return self.title
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+Azok a sorok, amik úgy kezdődnek, hogy from vagy import, más fájlokban lévő dolgokat adnak hozzá a fájlunkhoz. 
+Ahelyett, hogy minden fájlba átmásolnánk ugyanazokat a dolgokat, beemelhetünk néhány dolgot.
+
+#-----------------------------------------------------------------------

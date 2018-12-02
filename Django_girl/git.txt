@@ -1,0 +1,47 @@
+
+#-----------------------------------------------------------------------
+webfejlesztés menete:
+A saját számítógéped az a hely, ahol fejlesztesz és tesztelsz. 
+Amikor elégedett vagy a módosításaiddal, felmásolod a programodat GitHub-ra. 
+A website-od a szerverre a GitHub-ról frissítjük.
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+git használat: (https://tutorial.djangogirls.org/hu/deploy/)
+
+1. létre kell hozni egy repot (raktárat)
+	Bele állok a program mappájába (pl eplebania) ->
+		$ git init
+		$ git config --global user.name "Your Name"
+		$ git config --global user.email you@example.com
+	# a .gitignore file nem lesz a repoba, ezt kihaggya mindig
+
+2. státusz lekérdezése frissítés/feltőltés előtt:
+	$ git status
+
+3. Változások menétse:
+	$ git add --all .
+	$ git commit -m “ide lehett commitálni a feltőltés részleteit“
+
+4. Github reg, új repo készítése és a repo url-jének kinyerése.
+
+5. Össze kell kötni a git és a git hubot:
+	$ git remote add origin 'github_repo_url-je'
+	$ git push -u origin master
+
+6. Bekéri a GitHub user never és passomat
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+Változások mentése a gitre: (benne állok a fő munka mappában)
+	$git status
+	$ git add --all .
+		/* a ponnt azt jelenti, hogy a mappát adja hozzá, amiben állok */
+	$ git status
+	$ git commit -m "commit szövege."
+	$ git push
+#-----------------------------------------------------------------------
+
+

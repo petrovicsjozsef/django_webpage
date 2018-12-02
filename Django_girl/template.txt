@@ -1,0 +1,164 @@
+#---------------------------Django_Girl---------------------------------
+template-tel különböző információkat jeleníthetünk meg azonos formában
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+ezek sima html filok
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+eplebania/templates/eplebania	mappába kell(érdems) tenni
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+adjunk neki címet:
+	 <title> Eplébánia </title>
+#-----------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------
+template extending:
+	a HTML-ed egyes részeit több oldalon is fel tudod használni az alkalmazásodban
+	ha ugyanazt az információt szeretnéd felhasználni
+	vagy ugyanolyan layout-ot tervezel
+
+	Létrehozunk egy block-ot. Ez egy olyan template tag, amely segítségével HTML-t illeszthetsz be a 	blokkba más template-ekben, ezzel kiegészítve a base.html-t.
+
+	1. Hozd létre az alap template-et:
+		A base (alap) template a legegyszerűbb sablon, amit az alkalmazásod összes oldalán kiegészítesz.
+
+		Hozz létre egy base.html fájlt a blog/templates/blog/-ban:
+			blog
+			└───templates
+    				└───blog
+           				 base.html
+            				post_list.html
+
+	2. Nyisd meg, és másolj át mindent a post_list.html-ből a base.html-be
+	3. A base.html-ben cseréld ki a <body>-t:
+		{% for post in posts %}{% endfor %} részt kicseréltük erre:
+			{% block content %}
+			{% endblock %}
+	4. A blog/templates/blog/post_list.html-ből törölj ki mindent a body-n kívül, és a 
+	<div class="page-header"></div> részt is, hogy így nézzen ki a fájl:
+		{% for post in posts %}
+   			 <div class="post">
+       				 <div class="date">
+      		    			{{ post.published_date }}
+       				 </div>
+        			<h1><a href="">{{ post.title }}</a></h1>
+        			<p>{{ post.text|linebreaksbr }}</p>
+    			</div>
+		{% endfor %}
+
+	5. Add hozzá ezt a sort a fájl elejéhez:
+		{% extends 'blog/base.html' %}
+
+	6. Az előző sor kivételével rakj mindent {% block content %} és {% endblock %} közé. Így:
+		{% extends 'blog/base.html' %}
+
+		{% block content %}
+    			{% for post in posts %}
+        			<div class="post">
+            				<div class="date">
+               					{{ post.published_date }}
+           	 			</div>
+            				<h1><a href="">{{ post.title }}</a></h1>
+            				<p>{{ post.text|linebreaksbr }}</p>
+        			</div>
+    			{% endfor %}
+		{% endblock %}
+
+
+Ha TemplateDoesNotExists (a template nem létezik) hibát kapsz:
+Azt mondja, nincs blog/base.html fájlod, és fut a runserver a konzolban.
+próbáld meg leállítani (Ctrl+C-vel)
+és indítsd el újra a python manage.py runserver paranccsal.
+#-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+#-----------------------------------------------------------------------
+"
+template tag:
+
+Mint látod, a HTML-ben nem tudsz Python kódot írni, mivel a böngészők nem értik, csak a HTML-t.
+Fontos tudni, hogy a HTML inkább statikus, míg Python inkább dinamikus.
+
+A Django template tag-ek lehetővé teszik, hogy Python-szerű dolgokat írjunk a HTML-be, ezáltal gyorsabban és könnyebben tudsz dinamikus weboldalt készíteni. Éljen!
+"
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+"
+Ahhoz, hogy kiírjunk egy változót a Django template-ben, dupla kapcsos zárójelet használunk, benne a változó nevével, mint itt:
+"
+
+{{ posts }}
+
+ciklussal kiiratni a Django objektumok listáját:
+{% for post in posts %}
+    {{ post }}
+{% endfor %}
+
+
+így az igazi (a HTML Body-t feltőlti a tartalommal):
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+#-----------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------
+Közölnünk kell a HTML fájlunkkal is, hogy hozzáadtunk pár CSS-t:
+
+	1. Nyisd meg a blog/templates/blog/post_list.html fájlt és add a következő sort a fájl legelejére:
+		{% load staticfiles %}
+	2. Megmondtuk a template-ünknek, hol találja a CSS fájlokat: 
+		A <head> és a </head> tagek közé a következő sort add:
+			<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
+példa:
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
+
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
+#-----------------------------------------------------------------------
+
+
+
